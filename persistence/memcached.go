@@ -42,6 +42,12 @@ func (c *MemcachedStore) Get(key string, value interface{}) error {
 	return utils.Deserialize(item.Value, value)
 }
 
+// Get (see CacheStore interface)
+func (s *MemcachedStore) Has(key string) bool {
+	panic("not implemented")
+	return false
+}
+
 // Delete (see CacheStore interface)
 func (c *MemcachedStore) Delete(key string) error {
 	return convertMemcacheError(c.Client.Delete(key))

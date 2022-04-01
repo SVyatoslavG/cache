@@ -3,8 +3,8 @@ package persistence
 import (
 	"time"
 
-	"github.com/memcachier/mc"
 	"github.com/gin-contrib/cache/utils"
+	"github.com/memcachier/mc"
 )
 
 // MemcachedBinaryStore represents the cache with memcached persistence using
@@ -64,6 +64,12 @@ func (s *MemcachedBinaryStore) Get(key string, value interface{}) error {
 		return convertMcError(err)
 	}
 	return utils.Deserialize([]byte(val), value)
+}
+
+// Get (see CacheStore interface)
+func (s *MemcachedBinaryStore) Has(key string) bool {
+	panic("not implemented")
+	return false
 }
 
 // Delete (see CacheStore interface)

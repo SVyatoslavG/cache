@@ -32,6 +32,11 @@ func (c *InMemoryStore) Get(key string, value interface{}) error {
 	return ErrNotStored
 }
 
+func (c *InMemoryStore) Has(key string) bool {
+	_, found := c.Cache.Get(key)
+	return found
+}
+
 // Set (see CacheStore interface)
 func (c *InMemoryStore) Set(key string, value interface{}, expires time.Duration) error {
 	// NOTE: go-cache understands the values of DEFAULT and FOREVER

@@ -104,6 +104,12 @@ func (c *RedisStore) Get(key string, ptrValue interface{}) error {
 	return utils.Deserialize(item, ptrValue)
 }
 
+// Get (see CacheStore interface)
+func (s *RedisStore) Has(key string) bool {
+	panic("not implemented")
+	return false
+}
+
 func exists(conn redis.Conn, key string) bool {
 	retval, _ := redis.Bool(conn.Do("EXISTS", key))
 	return retval

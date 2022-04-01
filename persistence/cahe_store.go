@@ -23,6 +23,8 @@ type CacheStore interface {
 	// whether the key was found.
 	Get(key string, value interface{}) error
 
+	Has(key string) bool
+
 	// Set sets an item to the cache, replacing any existing item.
 	Set(key string, value interface{}, expire time.Duration) error
 
